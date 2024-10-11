@@ -14,7 +14,7 @@ def aç():
     dosya=file.split("/")
     dosyaadı.config(text=dosya[-1])
 def değiştirme():
-    sonuc.config(text=str(veri.count(giris.get()))+" tane "+giris.get()+" -> "+giris2.get()+" değiştirildi")
+    sonuc.config(text=str(veri.count(giris.get()))+" piece "+giris.get()+" -> "+giris2.get()+" replaced")
     yeniveri=veri.replace(giris.get(),giris2.get())
     global veri
     veri=yeniveri
@@ -26,7 +26,7 @@ def küçültme():
         yeniveri=yeniveri.replace(büyük[x],küçük[x])
     global veri
     veri=yeniveri
-    sonuc.config(text="Tüm harfler küçültüldü")
+    sonuc.config(text="All Letters are LowerCase now")
 def özelayar():
     yeniveri=veri
     sil=["%","$","^","<",">","|","?","=","*","(",")","[","]","{","}","/","@","~","^","?","£","ß","æ","Æ","!",":",";",".","`","€","à","–","�"]
@@ -37,12 +37,12 @@ def özelayar():
         yeniveri=yeniveri.replace(boşluk[a]," ")
     global veri
     veri=yeniveri
-    sonuc.config(text="Özel ayar uygulandı")
+    sonuc.config(text="Made it compatible to SQL, Done!")
 def kaydetme():
     aç=open(file,'w',encoding = "utf8")
     aç.write(veri)
     aç.close()
-    sonuc.config(text="Kaydedildi")
+    sonuc.config(text="Saved")
 pencere=Tk() 
 pencere.geometry("200x300")
 pencere.title("SearchPro")
@@ -52,14 +52,14 @@ yazi=Label(pencere)
 yazi.config(text="Professional Search Tool")
 yazi.pack()
 
-dosya=Button(text="Dosya Aç")
+dosya=Button(text="Open A File")
 dosya.config(command=aç)
 dosya.pack()
 
 giris=Entry(pencere)
 giris.pack()
 
-ara=Button(text="Ara")
+ara=Button(text="Search")
 ara.config(command=arama)
 ara.pack()
 
@@ -67,18 +67,18 @@ giris2= Entry(pencere)
 giris2.pack()
 
 değiştir=Button(pencere)
-değiştir.config(command=değiştirme,text="Değiştir")
+değiştir.config(command=değiştirme,text="Replace")
 değiştir.pack()
 
-dosyaadı=Label(text="Dosya Açılmadı!")
+dosyaadı=Label(text="File couldn't opened!")
 dosyaadı.pack()
 
 küçült=Button(pencere)
-küçült.config(text="Tüm Harfleri Küçült",command=küçültme)
+küçült.config(text="LowerCase All letters",command=küçültme)
 küçült.pack()
 
 özel=Button(pencere)
-özel.config(text="Özel Ayar Uygula",command=özelayar)
+özel.config(text="Make it compatible for SQL databases",command=özelayar)
 özel.pack()
 
 sonuc=Label()
@@ -87,7 +87,7 @@ sonuc.pack()
 
 
 kaydet=Button(pencere)
-kaydet.config(command=kaydetme,text="Kaydet")
+kaydet.config(command=kaydetme,text="Save")
 kaydet.pack()
 
 pencere.mainloop()
